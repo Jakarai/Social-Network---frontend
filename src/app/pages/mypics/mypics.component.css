@@ -1,0 +1,28 @@
+.img-container
+{
+    max-width: 250px;
+    /*max-height: 500px;*/
+    background-color: rgb(209, 231, 108);
+    color: white;
+    /*box-shadow: 2px 2px 6px rgb(75, 75, 75);*/
+    /*border-radius: 8px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:20px;  
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.img-content{
+    background-color: black;
+    max-width: 25%;
+    
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+#profile-picture{
+    border-radius: 1%;
+}

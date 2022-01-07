@@ -4,16 +4,15 @@ import { User } from 'src/app/models/user';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-upload-image',
-  templateUrl: './upload-image.component.html',
-  styleUrls: ['./upload-image.component.css']
+  selector: 'app-create-post',
+  templateUrl: './create-post.component.html',
+  styleUrls: ['./create-post.component.css']
 })
-export class UploadImageComponent implements OnInit {
+export class CreatePostComponent implements OnInit {
 
-  currentFile!: File;
+  postInput: string="";
   user: User=<User>{};
-  //user: User | undefined;
-
+  currentFile!: File;
 
   selectedFiles?: FileList;
   //currentFile?: File;
@@ -21,19 +20,14 @@ export class UploadImageComponent implements OnInit {
   errorMsg = '';
   uploadService: any;
 
-  constructor(private apiServe: ApiService, private router: Router) { }
+  //userId:number=0;
+
+  constructor(private apiServe: ApiService,router:Router) { }
 
   ngOnInit(): void {
     this.apiServe.checkSession().subscribe(responseBody => {
-      if(!responseBody.data){
-        this.router.navigate(["/"]);
-      } else {
-        console.log(responseBody);
-        this.user = responseBody.data;
-        console.log("user"+JSON.stringify(this.user));
-        console.log(this.user.userId);
-
-      }
+      this.user = responseBody.data;
+      console.log(this.user);
     })
   }
   selectedFile(event:any)
@@ -42,15 +36,19 @@ export class UploadImageComponent implements OnInit {
   }
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
-    console.log(this.selectedFiles);
+    console.log("selected files: "+this.selectedFiles);
   }
-
   upload(): void 
   {
-    this.errorMsg = '';
+    //this.upload();
+    this.apiServe.createPost(this.postInput,this.user).subscribe(responseBody0=>
+      {
+        console.log(responseBody0)
+        this.errorMsg = '';
 
     if (this.selectedFiles) 
     {
+      console.log("file found");
       const file: File | null = this.selectedFiles.item(0);
 
       if (file) 
@@ -64,8 +62,19 @@ export class UploadImageComponent implements OnInit {
       }
 
     }
+      })
 
     
+
   }
+
+  uploadPost()
+  {
+    this.apiServe.createPost(this.postInput,this.user).subscribe(responseBody0=>
+      {
+        console.log(responseBody0)
+      })
+  }
+
 
 }

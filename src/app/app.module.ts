@@ -17,6 +17,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { RegisterComponent } from './pages/register/register.component';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { MypicsComponent } from './pages/mypics/mypics.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
+import { FeedComponent } from './pages/feed/feed.component';
+import { UserFeedComponent } from './components/user-feed/user-feed.component';
 //import { ViewPicturesComponent } from './components/view-pictures/view-pictures.component';
 
 @NgModule({
@@ -34,6 +37,9 @@ import { MypicsComponent } from './pages/mypics/mypics.component';
     RegisterComponent,
     UploadImageComponent,
     MypicsComponent,
+    CreatePostComponent,
+    FeedComponent,
+    UserFeedComponent,
     //ViewPicturesComponent
   ],
   imports: [

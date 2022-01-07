@@ -1,0 +1,5 @@
+<div class="create-post-container">
+    <textarea name="paragraph_text" id="post-input" cols="30" rows="5" [(ngModel)]="postInput"></textarea>
+    <button class="btn btn-primary" (click)="uploadPost()">Post</button>
+    <input type="file"(change)="selectFile($event)">
+</div>

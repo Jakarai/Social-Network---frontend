@@ -7,6 +7,7 @@ import * as S3 from 'aws-sdk/clients/s3';
 import { environment } from 'src/environments/environment';
 import { HttpEventType } from '@angular/common/http';
 import { HttpResponse } from 'aws-sdk/global';
+import { Picture } from 'src/app/models/picture';
 
 @Component({
   selector: 'app-main-page',
@@ -17,8 +18,11 @@ export class MainPageComponent implements OnInit {
 
   currentFile!: File;
   user: User=<User>{};
+  pictureList: Array<any>=[];
+  picture:Picture=<Picture>{}
   //user: User | undefined;
 
+  img='';
 
   selectedFiles?: FileList;
   //currentFile?: File;
@@ -34,15 +38,30 @@ export class MainPageComponent implements OnInit {
         } else {
           console.log(responseBody);
           this.user = responseBody.data;
-          console.log("user"+JSON.stringify(this.user));
-          console.log(this.user.userId);
-
+          console.log("USER: "+this.user.userId);
         }
       })
+      
     
   }
 
   
+  setProfileImage(usrID:number)
+  {
+    this.apiServe.findProfilePic(this.user.userId).subscribe(responseBody0=>
+      {
+        console.log("BINGOOOOO"+usrID)
+        console.log("resp: "+responseBody0.data);
+        this.picture=responseBody0.data
+      })
+      for(let i=0;i<this.pictureList.length;i++)
+      {
+        this.picture=this.pictureList[i];
+        if(this.picture.profilePicture==true)
+          this.img = this.picture.pictureLink;
+      }
+
+  }
   
 }
 

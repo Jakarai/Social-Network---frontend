@@ -57,7 +57,7 @@ export class ApiService {
   }
 
   getUsersPosts(userId: number){
-    return this.httpCli.get<any>(`${this.domain}/user/${userId}`);
+    return this.httpCli.get<any>(`${this.domain}/post/user/${userId}`);
   }
 
   upload(file: File,userId:number) 
@@ -95,6 +95,20 @@ export class ApiService {
     return this.httpCli.put<any>(`http://localhost:9000/picture/true/${picID}`,{ 'Access-Control-Allow-Origin': '*'})
   }
 
+  findProfilePic(userid:number)
+  {
+    console.log(userid);
+    return this.httpCli.get<any>(`http://localhost:9000/picture/user/${userid}`)
+  }
+   
+  createPost(content:string, user:User)
+  {
+    return this.httpCli.post<any>(`http://localhost:9000/post`,
+    {
+      "content":content,
+      "user":user
+    })
+  }
 
 
 }

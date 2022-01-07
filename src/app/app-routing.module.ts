@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FeedComponent } from './pages/feed/feed.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MypicsComponent } from './pages/mypics/mypics.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: '', component: LoginPageComponent},
   {path: 'register',component:RegisterComponent},
   {path: 'mypics',component:MypicsComponent},
+  {path: 'feed',component:FeedComponent},
   /* no valid path, redirect to landing page */
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];

@@ -5,6 +5,6 @@ export interface Post{
     postId: number;
     submitted: any;
     content: string;
-    picture: Picture[];
+    pictureLink: string;
     user: User;
 }

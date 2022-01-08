@@ -19,6 +19,8 @@ export class ApiService {
     fileSource: new FormControl('', [Validators.required])
   });
 
+   current = new Date();
+
   constructor(private httpCli: HttpClient) { }
 
   register(username: string, password: string, email: string, firstname: string, lastname: string){
@@ -101,12 +103,14 @@ export class ApiService {
     return this.httpCli.get<any>(`http://localhost:9000/picture/user/${userid}`)
   }
    
-  createPost(content:string, user:User)
+  createPost(content:string, user:User,pictureLink:string)
   {
     return this.httpCli.post<any>(`http://localhost:9000/post`,
     {
       "content":content,
-      "user":user
+      "user":user,
+      "pictureLink":pictureLink,
+      "submitted": this.current.getTime()
     })
   }
 

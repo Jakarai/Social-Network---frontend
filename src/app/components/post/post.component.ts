@@ -25,7 +25,8 @@ export class PostComponent implements OnInit {
     this.getAllPosts();
   }
 
-  getAllPosts(){
+  getAllPosts()
+  {
     this.apiServe.getAllPosts().subscribe(responseBody => {
       //console.log("response: "+responseBody.data);
       this.postList = responseBody.data;
@@ -37,10 +38,12 @@ export class PostComponent implements OnInit {
         this.posts[i] = this.post;
         console.log(this.post);
         console.log(this.post.user.username);
-
+        console.log("imageLink: "+this.post.pictureLink)
       }
       //this.post = this.posts
       //this.user.username=this.posts.
     })
   }
+
+
 }

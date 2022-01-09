@@ -6,8 +6,9 @@ export interface User{
     username: string;
     password: string;
     email: string;
-    firstName: string;
-    lastName: string;
+    firstname: string;
+    lastname: string;
     posts: Post[];
-    pictures: Picture[];
+    //pictures: Picture[];
+    picture: string;
 }

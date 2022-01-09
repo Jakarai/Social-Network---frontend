@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -11,17 +12,23 @@ export class ForgotPasswordComponent implements OnInit {
 
   email: string = "";
 
-  constructor(private apiServ: ApiService) { }
+  constructor(private apiServ: ApiService,private router:Router) { }
 
   ngOnInit(): void {
   }
-  /*
-  resetPassword() {
-    this.apiServ.forgotPassword(this.email).subscribe(data => {
+
+  resetPassword() 
+  {
+    this.apiServ.forgotPassword(this.email).subscribe(data => 
+    {
       console.log(data)
     })
 
   }
-  */
+
+  goToResetPage()
+  {
+    this.router.navigate(["/resetPassword"]);
+  }  
 
 }

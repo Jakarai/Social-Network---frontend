@@ -20,11 +20,14 @@ export class ApiService {
   });
 
    current = new Date();
+   usernameSearch: string = "";
+
 
   constructor(private httpCli: HttpClient) { }
 
   register(username: string, password: string, email: string, firstname: string, lastname: string){
     return this.httpCli.post<any>("http://localhost:9000/user", {
+
       "username": username,
       "password": password,
       "email": email,
@@ -102,6 +105,11 @@ export class ApiService {
     console.log(userid);
     return this.httpCli.get<any>(`http://localhost:9000/picture/user/${userid}`)
   }
+  usersProfilePic(userid:number)
+  {
+    console.log(userid);
+    return this.httpCli.get<any>(`http://localhost:9000/picture/profilePic/user/${userid}`)
+  }
    
   createPost(content:string, user:User,pictureLink:string)
   {
@@ -111,6 +119,40 @@ export class ApiService {
       "user":user,
       "pictureLink":pictureLink,
       "submitted": this.current.getTime()
+    })
+  }
+
+  forgotPassword(email: string){
+    return this.httpCli.post<any>("http://localhost:9000/forgotPassword", {
+      "email":email
+    })
+  }
+  resetPassword(password: string, token: string){
+    return this.httpCli.post<any>("http://localhost:9000/resetPassword", {
+      "password":password,
+      "resetPasswordToken": token
+    })
+  }
+
+
+  searchUsers(){
+  return this.httpCli.get<any>(`${this.domain}/user`)
+}
+
+  getOneUser(userId: number){
+    return this.httpCli.get<any>(`${this.domain}/user/${userId}`)
+  }
+
+  changeUserInfo(id:number,username:string,password:string,email:string,firstname:string,lastName:string)
+  {
+    console.log("id: "+id)
+    return this.httpCli.put<any>(`${this.domain}/user`,{
+      "userId":id,
+      "username":username,
+      "password":password,
+      "email": email,
+      "firstname":firstname,
+      "lastname":lastName
     })
   }
 

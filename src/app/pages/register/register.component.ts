@@ -23,9 +23,11 @@ export class RegisterComponent implements OnInit {
 
   createAccount(){
     this.apiServ.register(this.usernameInput, this.passwordInput, this.emailInput, this.firstnameInput, this.lastnameInput)
+    
       .subscribe(responseBody => {
         console.log(responseBody);
 
+        console.log("Firstname: "+this.firstnameInput);
         if(responseBody.data){
           this.router.navigate(["mainpage"]);
         } else {

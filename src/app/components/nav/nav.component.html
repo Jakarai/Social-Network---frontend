@@ -21,9 +21,19 @@
               Account
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="/">Change Password</a></li>
+              <li><a class="dropdown-item" routerLink="/changePassword">Change Password</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/changeEmail">Change Email</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/changeFirst">Change Firstname</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/changeLast">Change Lastname</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/changeUsername">Change Username</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+              
+
             </ul>
           </li>
           <li><hr class="dropdown-divider"></li>
@@ -33,6 +43,11 @@
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search users" aria-label="Search">
+          <div *ngIf="userList">
+            <div  *ngFor="let element of userList">
+                <div class="user-item" (click)="goToDetails($event)">{{element.username}}</div>
+            </div>
+           </div>        
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>

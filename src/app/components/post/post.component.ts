@@ -16,12 +16,21 @@ export class PostComponent implements OnInit {
   posts: Post[] = [];
   picture: Picture=<Picture>{};
   user0: User=<User>{};
+  current_user:User=<User>{};
   post: Post=<Post>{}
   postList: Array<any>=[];
+  pictureList0: Array<any>=[];
+  picture0:Picture=<Picture>{};
+  profilePic:String = "";
+  profPicArr:string[]=[];
 
   constructor(private apiServe: ApiService, private router: Router) { }
 
   ngOnInit(): void {
+    this.apiServe.checkSession().subscribe(responseBody0 => {
+      this.current_user=responseBody0.data;
+    })
+
     this.getAllPosts();
   }
 
@@ -36,6 +45,16 @@ export class PostComponent implements OnInit {
       {
         this.post=this.postList[i];
         this.posts[i] = this.post;
+
+        this.apiServe.usersProfilePic(this.posts[i].user.userId).subscribe(responseBody0=>{
+          this.picture=responseBody0.data;
+          this.profPicArr[i] = this.picture.pictureLink;
+          this.posts[i].user.picture=this.picture.pictureLink;
+          //this.posts[i].user.pictures=this.picture;
+          console.log("ARRAY: "+ this.picture.pictureLink);
+        })
+        console.log("userID: "+this.post.user.userId);
+        
         console.log(this.post);
         console.log(this.post.user.username);
         console.log("imageLink: "+this.post.pictureLink)

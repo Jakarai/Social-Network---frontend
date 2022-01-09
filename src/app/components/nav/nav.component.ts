@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { connect } from 'http2';
 import { map, Observable } from 'rxjs';
@@ -16,7 +16,7 @@ export class NavComponent implements OnInit {
   //user: User | undefined;
   user: User=<User>{};
   profile_picture: string = "../../../assets/img/default-profile-picture.png";
-  username: Observable<string | null> | undefined;
+  username0: Observable<string | null> | undefined;
 
   session: boolean = false;
   pictureList: Array<any>=[];
@@ -24,6 +24,14 @@ export class NavComponent implements OnInit {
   //user: User | undefined;
 
   img='';
+  username: string = "";
+
+  userList: Array<any> = [];
+  tempList: Array<any> = [];
+
+userResponse: any;
+
+inputString: String= "";
 
   constructor(private apiServ: ApiService, private router: Router, private route: ActivatedRoute) { }
 
@@ -37,7 +45,7 @@ export class NavComponent implements OnInit {
         this.session = true;
         this.setProfileImage(this.user.userId)
         console.log(this.user);
-        this.username = this.route.paramMap.pipe(
+        this.username0 = this.route.paramMap.pipe(
           map((params: ParamMap) => params.get(`${this.user?.username}`))
         );
       }
@@ -69,4 +77,15 @@ export class NavComponent implements OnInit {
       
 
   }
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.tempList = this.userList.filter((user: any) => user.username.includes(this.username))
+    console.log(this.tempList)
+  }
+
+goToDetails(e: any){
+  this.apiServ.usernameSearch = e.target.innerText.toLowerCase();
+  this.router.navigate(['/userProfile']);
+}
 }

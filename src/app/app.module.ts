@@ -20,6 +20,16 @@ import { MypicsComponent } from './pages/mypics/mypics.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { FeedComponent } from './pages/feed/feed.component';
 import { UserFeedComponent } from './components/user-feed/user-feed.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ForgotPasswordpasswordComponent } from './pages/forgot-passwordpassword/forgot-passwordpassword.component';
+import { ResetComponent } from './pages/reset/reset.component';
+import { SearchListComponent } from './components/search-list/search-list.component';
+import { SearchComponent } from './components/search/search.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { ChangeUsernameComponent } from './pages/change-username/change-username.component';
+import { ChangeEmailComponent } from './pages/change-email/change-email.component';
+import { ChangefirstNameComponent } from './pages/changefirst-name/changefirst-name.component';
+import { ChangelastNameComponent } from './pages/changelast-name/changelast-name.component';
 //import { ViewPicturesComponent } from './components/view-pictures/view-pictures.component';
 
 @NgModule({
@@ -40,6 +50,16 @@ import { UserFeedComponent } from './components/user-feed/user-feed.component';
     CreatePostComponent,
     FeedComponent,
     UserFeedComponent,
+    ResetPasswordComponent,
+    ForgotPasswordpasswordComponent,
+    ResetComponent,
+    SearchListComponent,
+    SearchComponent,
+    ChangePasswordComponent,
+    ChangeUsernameComponent,
+    ChangeEmailComponent,
+    ChangefirstNameComponent,
+    ChangelastNameComponent,
     //ViewPicturesComponent
   ],
   imports: [

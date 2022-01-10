@@ -27,7 +27,7 @@ export class CreateAccountComponent implements OnInit {
         console.log(responseBody);
 
         if(responseBody.data){
-          this.router.navigate(["mainpage"]);
+          this.router.navigate(["/"]);
         } else {
           this.errMessage = responseBody.message;
         }

@@ -37,7 +37,8 @@ export class ApiService {
   }
 
   login(username: string, password: string): Observable<any> {
-    return this.httpCli.post<any>("http://localhost:9000/session", {
+    //return this.httpCli.post<any>("http://localhost:9000/session", {
+    return this.httpCli.post<any>(`${this.domain}/session`, {  
       "username" : username,
       "password" : password
     }, {
@@ -46,13 +47,15 @@ export class ApiService {
   }
 
   checkSession(){
-    return this.httpCli.get<any>(`http://localhost:9000/session`, {
+    //return this.httpCli.get<any>(`http://localhost:9000/session`, {
+      return this.httpCli.get<any>(`${this.domain}/session`, {
       withCredentials: true
     })
   }
 
   logout(){
-    return this.httpCli.delete<any>(`http://localhost:9000/session`, {
+    //return this.httpCli.delete<any>(`http://localhost:9000/session`, {
+    return this.httpCli.delete<any>(`${this.domain}/session`, {  
       withCredentials: true
     })
   }
@@ -74,7 +77,8 @@ export class ApiService {
   formData.append('file', file);
 
   console.log(userId);
-  return this.httpCli.post<any>(`http://localhost:9000/picture/${userId}/file`, formData,{
+  //return this.httpCli.post<any>(`http://localhost:9000/picture/${userId}/file`, formData,{
+  return this.httpCli.post<any>(`${this.domain}/picture/${userId}/file`, formData,{  
     reportProgress: true,
     
   })
@@ -85,7 +89,8 @@ export class ApiService {
   {
     console.log("ID: "+userId);
     //console.log("api: "+this.httpCli.get<any>(`http://localhost:9000/picture/user/${userId}`))
-    return this.httpCli.get<any>(`http://localhost:9000/picture/user/${userId}`,{
+    //return this.httpCli.get<any>(`http://localhost:9000/picture/user/${userId}`,{
+    return this.httpCli.get<any>(`${this.domain}/picture/user/${userId}`,{  
       withCredentials: true
     })
     
@@ -93,27 +98,32 @@ export class ApiService {
 
   setPicFalse(picID:number)
   {
-    return this.httpCli.put<any>(`http://localhost:9000/picture/false/${picID}`,{'Access-Control-Allow-Origin': '*'})
+    //return this.httpCli.put<any>(`http://localhost:9000/picture/false/${picID}`,{'Access-Control-Allow-Origin': '*'})
+    return this.httpCli.put<any>(`${this.domain}/picture/false/${picID}`,{'Access-Control-Allow-Origin': '*'})
   }
   setPicTrue(picID:number)
   {
-    return this.httpCli.put<any>(`http://localhost:9000/picture/true/${picID}`,{ 'Access-Control-Allow-Origin': '*'})
+    //return this.httpCli.put<any>(`http://localhost:9000/picture/true/${picID}`,{ 'Access-Control-Allow-Origin': '*'})
+    return this.httpCli.put<any>(`${this.domain}/picture/true/${picID}`,{ 'Access-Control-Allow-Origin': '*'})
   }
 
   findProfilePic(userid:number)
   {
     console.log(userid);
-    return this.httpCli.get<any>(`http://localhost:9000/picture/user/${userid}`)
+    //return this.httpCli.get<any>(`http://localhost:9000/picture/user/${userid}`)
+    return this.httpCli.get<any>(`${this.domain}/picture/user/${userid}`)
   }
   usersProfilePic(userid:number)
   {
     console.log(userid);
-    return this.httpCli.get<any>(`http://localhost:9000/picture/profilePic/user/${userid}`)
+    //return this.httpCli.get<any>(`http://localhost:9000/picture/profilePic/user/${userid}`)
+    return this.httpCli.get<any>(`${this.domain}/picture/profilePic/user/${userid}`)
   }
    
   createPost(content:string, user:User,pictureLink:string)
   {
-    return this.httpCli.post<any>(`http://localhost:9000/post`,
+    //return this.httpCli.post<any>(`http://localhost:9000/post`,
+    return this.httpCli.post<any>(`${this.domain}/post`,
     {
       "content":content,
       "user":user,
@@ -123,12 +133,14 @@ export class ApiService {
   }
 
   forgotPassword(email: string){
-    return this.httpCli.post<any>("http://localhost:9000/forgotPassword", {
+    //return this.httpCli.post<any>("http://localhost:9000/forgotPassword", {
+    return this.httpCli.post<any>(`${this.domain}/forgotPassword`, {  
       "email":email
     })
   }
   resetPassword(password: string, token: string){
-    return this.httpCli.post<any>("http://localhost:9000/resetPassword", {
+    //return this.httpCli.post<any>("http://localhost:9000/resetPassword", {
+    return this.httpCli.post<any>(`${this.domain}/resetPassword`, {  
       "password":password,
       "resetPasswordToken": token
     })

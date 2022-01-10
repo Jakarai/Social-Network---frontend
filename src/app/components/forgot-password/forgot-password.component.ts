@@ -17,18 +17,12 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  resetPassword() 
-  {
-    this.apiServ.forgotPassword(this.email).subscribe(data => 
-    {
+  resetPassword() {
+    this.apiServ.forgotPassword(this.email).subscribe(data => {
       console.log(data)
     })
 
+    this.router.navigate(['/resetPassword']);
   }
-
-  goToResetPage()
-  {
-    this.router.navigate(["/resetPassword"]);
-  }  
 
 }

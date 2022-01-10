@@ -65,6 +65,7 @@ export class UploadImageComponent implements OnInit {
 
     }
 
+    this.router.navigate(['/']);
     
   }
 

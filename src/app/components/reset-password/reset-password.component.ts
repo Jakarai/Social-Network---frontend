@@ -21,5 +21,6 @@ export class ResetPasswordComponent implements OnInit {
     this.apiServ.resetPassword(this.password, this.token).subscribe(data => {
       console.log(data)
     })
+    this.router.navigate(['/']);
   }
 }

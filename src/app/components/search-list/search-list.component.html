@@ -1,0 +1,6 @@
+<div *ngIf="userList">
+    <div class="user-list-container" *ngFor="let element of userList">
+        <div class="user-item" (click)="goToDetails($event)">{{element.username}}</div>
+    </div>
+
+</div>

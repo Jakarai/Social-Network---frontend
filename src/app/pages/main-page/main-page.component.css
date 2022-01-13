@@ -10,7 +10,7 @@
     flex-direction: column;
     align-items: center;
     padding:20px;
-    margin-top: 10px;  
+    margin: auto;
     border-radius: 6%;
 }
 
@@ -20,34 +20,19 @@
     cursor: pointer;
 }
 
-h1{
-    text-align: center;
-    padding: 60px 0;
-    background-color: #e8ecef;
-    font-size: 3.3rem;
+.picture-container{
+    display: flex;
+    flex-direction: column;
 }
 
-.search-box{
-    display:block;
-    margin: 40px auto 0 auto;
-    padding: 10px 20px;
-    max-width: 600px;
-    width: 95%;
+#container{
+    display: block;
+}
 
+.image-container{
+    padding: 4px;
 }
-.search-results{
-    max-width: 600px;
-    width: 65%;
-    margin: 20px auto 0 auto;
-    hr{
-        height: 1px;
-    }
-}
-.search-results hr{
-    height: 1px;
-    border: none;
-    background-color: lightgrey;
-}
-.search-results p{
-    margin: 10px 0;
+
+.img-content{
+    padding: 4px;
 }

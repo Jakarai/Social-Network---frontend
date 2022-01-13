@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Picture } from 'src/app/models/picture';
 import { User } from 'src/app/models/user';
 import { ApiService } from 'src/app/services/api.service';
@@ -16,7 +17,7 @@ export class MypicsComponent implements OnInit {
 
   picList: Array<any>=[];
 
-  constructor(private apiServe: ApiService) { }
+  constructor(private apiServe: ApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.apiServe.checkSession().subscribe(responseBody => {
@@ -41,10 +42,9 @@ export class MypicsComponent implements OnInit {
       })
   }
   
-  setAsProfilePic(id:number)
-  {//console.log("piclist:   "+JSON.stringify(this.picList));
-    for(let i=0;i<this.picList.length;i++)
-    {
+  setAsProfilePic(id:number) {
+    //console.log("piclist:   "+JSON.stringify(this.picList));
+    for(let i=0;i<this.picList.length;i++) {
       this.picture = this.picList[i];
       this.apiServe.setPicFalse(this.picture.pictureId).subscribe(
       responseBody=>{
@@ -54,14 +54,13 @@ export class MypicsComponent implements OnInit {
         console.log(responseBody0);
       })
     }
-    
-   
-
-
-
   }
 
-
-
-
+  deletePicture(id:number){
+    this.apiServe.deletePicture(id).subscribe(responseBody => {
+      console.log("deletePicture() invoked");
+      this.router.navigate(['mypics']);
+      console.log("after route");
+    })
+  }
 }

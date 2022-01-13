@@ -1,5 +1,29 @@
 <div class="create-post-container">
-    <textarea name="paragraph_text" id="post-input" cols="30" rows="5" [(ngModel)]="postInput"></textarea>
-    <button class="btn btn-primary" (click)="uploadPost()">Post</button>
-    <input type="file"(change)="selectFile($event)">
+    <textarea class="form-control" name="paragraph_text" id="post-input" rows="3" [(ngModel)]="postInput"></textarea>
+    <div class="input-container">
+        <input type="file"(change)="selectFile($event)" id="file-upload">
+        <button class="btn btn-light" (click)="uploadPost()">Post</button>
+    </div>
 </div>
+
+
+<!-- <div *ngIf="posts" id="post-container">
+    
+    <div class="post-container" *ngFor="let post of posts">
+        <span id="post-content">
+            <img *ngIf="profilePic" id="profile-picture" src={{profilePic}} alt="" width="50" height="40">
+            <img *ngIf="!profilePic" id="post-author-picture" src="../../../assets/img/default-profile-picture.png" alt="" width="50" height="40">
+            <div id="post-author">Posted by: {{user.username}}</div>
+        </span>
+        
+        <span><h3 id ="postId_{{post.postId}}" >{{post.content}}</h3></span>
+        <div *ngIf="post.pictureLink">
+            <img id="post-picture" src={{post.pictureLink}} alt="" width="250" height="120">
+        </div>
+
+        <div>
+            {{post.submitted}}
+        </div>
+
+    </div>
+</div> -->

@@ -1,28 +1,40 @@
 .img-container
 {
-    max-width: 250px;
-    /*max-height: 500px;*/
-    background-color: rgb(209, 231, 108);
-    color: white;
-    /*box-shadow: 2px 2px 6px rgb(75, 75, 75);*/
-    /*border-radius: 8px;*/
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding:20px;  
-    margin-top: 15px;
-    border-radius: 10px;
+    margin: auto;
 }
 
 .img-content{
-    background-color: black;
-    max-width: 25%;
+    max-width: 320px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
     
-    display: flex;
-    justify-content: space-evenly;
+    display: block;
     border-radius: 10px;
-    margin-top: 15px;
+    padding: 5px;
+
 }
 #profile-picture{
     border-radius: 1%;
+}
+
+.upload-container{
+    padding: 3em;
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    height: 4em;
+    width: 8em;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 0%;
+    padding: 4px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    padding: 4px;
 }

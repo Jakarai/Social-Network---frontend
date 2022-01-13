@@ -40,13 +40,13 @@ label {
     font-weight: 999;
 }
 
-#login-btn{
+#create-acct-btn{
     background-color: #378156b7;
     color: white;
     box-shadow: 1px 1px 1px rgb(73, 71, 71);
 }
 
-#login-btn:hover{
+#create-acct-btn:hover{
     background-color: whitesmoke;
     color: #378156b7;
     border-color: #378156b7;

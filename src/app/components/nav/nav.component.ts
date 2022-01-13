@@ -23,6 +23,8 @@ export class NavComponent implements OnInit {
   picture:Picture=<Picture>{}
   //user: User | undefined;
 
+  profilePictureCheck = false;
+
   img='';
   username: string = "";
 
@@ -44,6 +46,7 @@ inputString: String= "";
         this.user = responseBody.data;
         this.session = true;
         this.setProfileImage(this.user.userId)
+        this.profilePictureCheck = true;
         console.log(this.user);
         this.username0 = this.route.paramMap.pipe(
           map((params: ParamMap) => params.get(`${this.user?.username}`))

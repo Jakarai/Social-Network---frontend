@@ -42,69 +42,66 @@ export class MainPageComponent implements OnInit {
   userResponse: any;
 
   profilePic:String = "";
-  //inputString: String= "";
+
+  
 
   constructor(private apiServe: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-      this.apiServe.checkSession().subscribe(responseBody => {
-        if(!responseBody.data){
-          this.router.navigate(["/"]);
-        } else {
-          console.log(responseBody);
-          this.user = responseBody.data;
-          console.log("USER: "+this.user.userId);
-          this.apiServe.findProfilePic(this.user.userId).subscribe(responseBody0=>{
-            console.log("profile picture: "+responseBody0.data);
-            this.pictureList0 = responseBody0.data;
-            //console.log("profile picture link: "+this.pictureList0);
-            for(let i=0;i<this.pictureList0.length;i++)
-            {
-              this.picture0 = this.pictureList0[i];
-              //console.log("profile picture link: "+this.picture0.pictureLink);
-              if(this.picture0.profilePicture==true)
-              {
-                this.profilePic = this.picture0.pictureLink;
-                console.log("profile picture link: "+this.profilePic);
-              }
-               
+    this.apiServe.checkSession().subscribe(responseBody => {
+      if(!responseBody.data){
+        this.router.navigate(["/"]);
+      } else {
+        console.log(responseBody);
+        this.user = responseBody.data;
 
+        console.log("USER: "+this.user.userId);
+        this.apiServe.findProfilePic(this.user.userId).subscribe(responseBody0=>{
+          console.log("profile picture: "+responseBody0.data);
+          this.pictureList0 = responseBody0.data;
+          
+          for(let i=0;i<this.pictureList0.length;i++)
+          {
+            this.picture0 = this.pictureList0[i];
+            //console.log("profile picture link: "+this.picture0.pictureLink);
+            if(this.picture0.profilePicture==true)
+            {
+              this.profilePic = this.picture0.pictureLink;
+              console.log("profile picture link: "+this.profilePic);
             }
-          })
-         
-        }
-      })
-      
-    
+
+          }
+        })
+        
+      }
+    })
   }
 
   
-  setProfileImage(usrID:number)
-  {
-    this.apiServe.findProfilePic(this.user.userId).subscribe(responseBody0=>
-      {
-        console.log("BINGOOOOO"+usrID)
-        console.log("resp: "+responseBody0.data);
-        this.picture=responseBody0.data
-      })
-      for(let i=0;i<this.pictureList.length;i++)
-      {
-        this.picture=this.pictureList[i];
-        if(this.picture.profilePicture==true)
-          this.img = this.picture.pictureLink;
-      }
 
+  
+  setProfileImage(usrID:number) {
+    this.apiServe.findProfilePic(this.user.userId).subscribe(responseBody0 => {
+      console.log("BINGOOOOO"+usrID)
+      console.log("resp: "+responseBody0.data);
+      this.picture=responseBody0.data
+    })
+    for(let i=0;i<this.pictureList.length;i++) {
+      this.picture=this.pictureList[i];
+      if(this.picture.profilePicture==true)
+        this.img = this.picture.pictureLink;
+    }
   }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.tempList = this.userList.filter((user: any) => user.username.includes(this.username))
     console.log(this.tempList)
-}
+  }
 
-goToDetails(e: any)
-{
-  this.apiServe.usernameSearch = e.target.innerText.toLowerCase();
-  this.router.navigate(['/userProfile']);
-}
+  goToDetails(e: any) {
+    this.apiServe.usernameSearch = e.target.innerText.toLowerCase();
+    this.router.navigate(['/userProfile']);
+  }
   
 }
 

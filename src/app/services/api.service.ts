@@ -168,5 +168,8 @@ export class ApiService {
     })
   }
 
+  deletePicture(pictureId:number){
+    return this.httpCli.delete<any>(`${this.domain}/picture/${pictureId}`);
+  }
 
 }

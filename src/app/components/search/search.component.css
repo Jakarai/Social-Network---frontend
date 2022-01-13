@@ -7,11 +7,12 @@ h1{
 
 .search-box{
     display:block;
-    margin: 40px auto 0 auto;
-    padding: 10px 20px;
-    max-width: 600px;
-    width: 95%;
+    padding: 8px;
+}
 
+.search-container{
+    display: flex;
+    justify-content: center;
 }
 .search-results{
     max-width: 600px;

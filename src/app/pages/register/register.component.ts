@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
         console.log("Firstname: "+this.firstnameInput);
         if(responseBody.data){
-          this.router.navigate(["mainpage"]);
+          this.router.navigate(["/"]);
         } else {
           this.errMessage = responseBody.message;
         }

@@ -1,0 +1,16 @@
+<div *ngIf="posts">
+    
+    <div class="post-container" *ngFor="let post of posts">
+        <img id="profile-picture" src={{profilePic}} alt="" width="50" height="40">
+        <span>{{user.username}}</span>
+        
+        <span><h3>{{post.content}}</h3></span>
+        <div *ngIf="post.pictureLink">
+            <img id="profile-picture" src={{post.pictureLink}} alt="" width="250" height="120">
+        </div>
+
+        <!--
+        <div *ngIf=""></div>
+        -->
+    </div>
+</div>

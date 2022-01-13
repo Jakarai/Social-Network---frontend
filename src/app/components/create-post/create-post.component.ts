@@ -70,6 +70,7 @@ export class CreatePostComponent implements OnInit {
     })
   })
 
+
   }
 
   selectedFile(event:any)

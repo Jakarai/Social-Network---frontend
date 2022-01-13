@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent } from '@angular/common/http';
-import { first, Observable } from 'rxjs';
+import { first, Observable, Subject, tap } from 'rxjs';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { HttpRequest } from 'aws-sdk/global';
@@ -21,9 +21,17 @@ export class ApiService {
 
    current = new Date();
    usernameSearch: string = "";
-
+  
 
   constructor(private httpCli: HttpClient) { }
+
+
+  private _refreshPosts$ = new Subject<void>();
+
+  get refreshPosts$() {
+    return this._refreshPosts$
+  }
+
 
   register(username: string, password: string, email: string, firstname: string, lastname: string){
     return this.httpCli.post<any>("http://localhost:9000/user", {
@@ -123,13 +131,18 @@ export class ApiService {
   createPost(content:string, user:User,pictureLink:string)
   {
     //return this.httpCli.post<any>(`http://localhost:9000/post`,
-    return this.httpCli.post<any>(`${this.domain}/post`,
-    {
-      "content":content,
-      "user":user,
-      "pictureLink":pictureLink,
-      "submitted": this.current.getTime()
-    })
+   try {
+     return this.httpCli.post<any>(`${this.domain}/post`,
+     {
+       "content":content,
+       "user":user,
+       "pictureLink":pictureLink,
+       "submitted": this.current.getTime()
+     })
+   } finally {
+     this.getAllPosts();
+   }
+
   }
 
   forgotPassword(email: string){
@@ -167,6 +180,7 @@ export class ApiService {
       "lastname":lastName
     })
   }
+  
 
 
 }

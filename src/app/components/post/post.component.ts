@@ -24,6 +24,7 @@ export class PostComponent implements OnInit {
   profilePic:String = "";
   profPicArr:string[]=[];
 
+
   constructor(private apiServe: ApiService, private router: Router) { }
 
   ngOnInit(): void {
@@ -32,7 +33,10 @@ export class PostComponent implements OnInit {
     })
 
     this.getAllPosts();
+    
   }
+
+
 
   getAllPosts()
   {

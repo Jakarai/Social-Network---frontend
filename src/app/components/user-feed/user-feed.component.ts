@@ -22,36 +22,6 @@ export class UserFeedComponent implements OnInit {
   constructor(private apiServe: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-    this.apiServe.checkSession().subscribe(responseBody => {
-      this.user = responseBody.data;
-      console.log(this.user);
-    this.apiServe.getUsersPosts(this.user.userId).subscribe(responseBody0=>{
-      this.posts = responseBody0.data;
-      console.log(responseBody0);
-      this.apiServe.findProfilePic(this.user.userId).subscribe(responseBody0=>{
-        this.pictureList0 = responseBody0.data;
-        //console.log("profile picture link: "+this.pictureList0);
-        for(let i=0;i<this.pictureList0.length;i++)
-        {
-          this.picture0 = this.pictureList0[i];
-          //console.log("profile picture link: "+this.picture0.pictureLink);
-          if(this.picture0.profilePicture==true)
-          {
-            this.profilePic = this.picture0.pictureLink;
-            console.log("profile picture link: "+this.profilePic);
-          }
-           
-
-        }
-
-      })
-
-      for(let i=0;i<this.posts.length;i++)
-      {
-        this.post = this.posts[i];
-      }
-    })
-  })
-
+    
 }
 }

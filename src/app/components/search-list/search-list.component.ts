@@ -12,6 +12,8 @@ export class SearchListComponent implements OnInit {
 
   @Input()
   username: string = "";
+
+  tempUser: User | undefined;
   
   userList: Array<any> = [];
   tempList: Array<any> = [];
@@ -39,9 +41,8 @@ export class SearchListComponent implements OnInit {
         console.log("SEARCH: "+this.user);
     }
   
-    goToDetails(e: any)
-    {
-      this.apiServ.usernameSearch = e.target.innerText.toLowerCase();
-      this.router.navigate(['/userProfile']);
+    goToDetails(e: any) {
+      let id = e.target.innerText.slice(0,1);
+      this.router.navigate([id]);
     }
 }

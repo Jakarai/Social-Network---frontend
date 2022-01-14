@@ -132,6 +132,10 @@ export class ApiService {
     })
   }
 
+  getUserByUsername(username: string){
+    return this.httpCli.get<any>(`${this.domain}/user/${username}`);
+  }
+
   forgotPassword(email: string){
     //return this.httpCli.post<any>("http://localhost:9000/forgotPassword", {
     return this.httpCli.post<any>(`${this.domain}/forgotPassword`, {  

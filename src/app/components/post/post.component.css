@@ -1,11 +1,8 @@
 .post-container
 {
     color: white;
-
     display: flex;
-
     align-items: center;
-    padding: 4px;  
     margin-top: 8px;
     border-radius: 6px;
 }
@@ -27,17 +24,23 @@
 
 .user-data{
     padding: 8px;
-    margin: 8px;
+}
+
+.content-container{
+    margin-top: 12px;
 }
 
 .post-meta{
     display: table-column;
+    margin-top: 12px;
 }
 
 #content{
     border-style: double;
     padding: 4px;
-    width: 325px;
+    margin: 4px;
+    width: 345px;
+    height: 100px;
 }
 
 #post-picture{

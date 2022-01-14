@@ -1,19 +1,11 @@
 .img-container
 {
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin: 14px;
 }
 
-.img-content{
-    max-width: 320px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 5px;
-    
-    display: block;
-    border-radius: 10px;
-    padding: 5px;
 
-}
 #profile-picture{
     border-radius: 1%;
 }
@@ -27,9 +19,9 @@
 .btn{
     height: 4em;
     width: 8em;
+    border-radius: 0%;
     margin-top: auto;
     margin-bottom: auto;
-    border-radius: 0%;
     padding: 4px;
 }
 

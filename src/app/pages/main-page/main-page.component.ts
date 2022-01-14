@@ -50,29 +50,12 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.apiServe.checkSession().subscribe(responseBody => {
       if(!responseBody.data){
-        this.router.navigate(["/"]);
+        this.router.navigate(['/']);
       } else {
         console.log(responseBody);
         this.user = responseBody.data;
 
         console.log("USER: "+this.user.userId);
-        this.apiServe.findProfilePic(this.user.userId).subscribe(responseBody0=>{
-          console.log("profile picture: "+responseBody0.data);
-          this.pictureList0 = responseBody0.data;
-          
-          for(let i=0;i<this.pictureList0.length;i++)
-          {
-            this.picture0 = this.pictureList0[i];
-            //console.log("profile picture link: "+this.picture0.pictureLink);
-            if(this.picture0.profilePicture==true)
-            {
-              this.profilePic = this.picture0.pictureLink;
-              console.log("profile picture link: "+this.profilePic);
-            }
-
-          }
-        })
-        
       }
     })
   }

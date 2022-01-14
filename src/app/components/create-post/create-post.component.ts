@@ -29,6 +29,9 @@ export class CreatePostComponent implements OnInit {
   uploadService: any;
   img = '';
 
+  // helper
+  toggle = false;
+
   constructor(private apiServe: ApiService, router: Router) { }
 
   ngOnInit(): void {
@@ -36,7 +39,6 @@ export class CreatePostComponent implements OnInit {
       this.user = responseBody.data;
       console.log(this.user);
     this.apiServe.getUsersPosts(this.user.userId).subscribe(responseBody0=>{
-      this.posts = responseBody0.data;
       console.log(responseBody0);
       this.apiServe.findProfilePic(this.user.userId).subscribe(responseBody0=>{
         this.pictureList0 = responseBody0.data;
@@ -50,10 +52,7 @@ export class CreatePostComponent implements OnInit {
             this.profilePic = this.picture0.pictureLink;
             console.log("profile picture link: "+this.profilePic);
           }
-           
-
         }
-
       })
 
       for(let i=0;i<this.posts.length;i++) {
@@ -65,8 +64,7 @@ export class CreatePostComponent implements OnInit {
 
   }
 
-  selectedFile(event:any)
-  {
+  selectedFile(event:any) {
     this.currentFile = event.target.files;
   }
 
@@ -76,30 +74,28 @@ export class CreatePostComponent implements OnInit {
   }
 
 
-  uploadPost()
-  {
-    
-      this.errorMsg = '';
+  uploadPost() {
+    this.errorMsg = '';
 
-      if (this.selectedFiles) 
+    if (this.selectedFiles) 
+    {
+      console.log("file found");
+
+      const file: File | null = this.selectedFiles.item(0);
+
+      if (file) 
       {
-        console.log("file found");
-  
-        const file: File | null = this.selectedFiles.item(0);
-  
-        if (file) 
+        this.currentFile = file;
+        console.log(this.currentFile);
+        this.apiServe.upload(this.currentFile,this.user.userId).subscribe(responseBody=>
         {
-          this.currentFile = file;
-          console.log(this.currentFile);
-          this.apiServe.upload(this.currentFile,this.user.userId).subscribe(responseBody=>
-          {
-            this.img = responseBody.data;
-            console.log(responseBody.data);
-            this.apiServe.createPost(this.postInput,this.user,this.img).subscribe(responseBody0=>
-              {
-                console.log(responseBody0)
-                this.posts.push(responseBody0.data)
-              })
+          this.img = responseBody.data;
+          console.log(responseBody.data);
+          this.apiServe.createPost(this.postInput,this.user,this.img).subscribe(responseBody0=>
+            {
+              console.log(responseBody0)
+              this.posts.push(responseBody0.data);
+            })
           });
         }
   
@@ -114,11 +110,8 @@ export class CreatePostComponent implements OnInit {
           })
       }
   
-      this.postInput = ""
-  
-      this.apiServe.getAllPosts();
-
-
+      this.postInput = "";
+      this.toggle = true;
   }
 
   getAllPosts(){

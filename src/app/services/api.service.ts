@@ -172,4 +172,8 @@ export class ApiService {
     return this.httpCli.delete<any>(`${this.domain}/picture/${pictureId}`);
   }
 
+  deletePost(postId: number){
+    return this.httpCli.delete<any>(`${this.domain}/post/${postId}`);
+  }
+
 }

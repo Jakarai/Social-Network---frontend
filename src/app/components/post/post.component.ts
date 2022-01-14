@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Picture } from 'src/app/models/picture';
@@ -12,6 +12,8 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+
+  @Input('type') profile: number | undefined;
 
   posts: Post[] = [];
   picture: Picture=<Picture>{};
@@ -61,6 +63,12 @@ export class PostComponent implements OnInit {
       }
       //this.post = this.posts
       //this.user.username=this.posts.
+    })
+  }
+
+  deletePost(postId: number){
+    this.apiServe.deletePost(postId).subscribe(responseBody => {
+      this.posts = this.posts.filter(p => p.postId !== postId)
     })
   }
 

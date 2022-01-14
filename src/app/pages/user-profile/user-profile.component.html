@@ -1,3 +1,10 @@
+<div class="img-container">
+    <span class="img-content" *ngFor="let pic of pictures">
+        
+        <img id="pic" [src]="pic.pictureLink" width="320px" height="250px"/>
+    </span>
+</div>
+
 <div *ngIf="posts">
     
     <div class="post-container" *ngFor="let post of posts">
@@ -16,9 +23,6 @@
                     {{post.submitted}}
                     <br>
 
-                    <br>
-
-                    <button *ngIf="post.user.userId == current_user.userId" type="button" class="btn btn-danger" id="delete-btn" (click) = "deletePost(post.postId)">Delete</button>
                 </div>
 
             </span>

@@ -30,6 +30,7 @@ import { ChangeUsernameComponent } from './pages/change-username/change-username
 import { ChangeEmailComponent } from './pages/change-email/change-email.component';
 import { ChangefirstNameComponent } from './pages/changefirst-name/changefirst-name.component';
 import { ChangelastNameComponent } from './pages/changelast-name/changelast-name.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 //import { ViewPicturesComponent } from './components/view-pictures/view-pictures.component';
 
 @NgModule({
@@ -60,6 +61,7 @@ import { ChangelastNameComponent } from './pages/changelast-name/changelast-name
     ChangeEmailComponent,
     ChangefirstNameComponent,
     ChangelastNameComponent,
+    UserProfileComponent,
     //ViewPicturesComponent
   ],
   imports: [

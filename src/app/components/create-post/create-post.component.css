@@ -11,6 +11,11 @@
     margin-top: 8px;
 }
 
+#post-alert{
+    padding: 2px;
+    margin: 2px;
+}
+
 .btn{
    width: 8em;
    border-radius: 3px;
@@ -26,6 +31,16 @@
     justify-content: space-between;
 }
 
+textarea{
+    border-radius: 4px;
+    margin: 4px;
+    width: 99%;
+}
+
+#post-container{
+    margin: 8px;
+}
+
 .post-container
 {
     background-color: #378156b7;
@@ -35,8 +50,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding:12px;  
-    margin-top: 10px;
+    padding: 4px;  
+    margin: 4px;
     border-radius: 6px;
 
 }
@@ -65,11 +80,6 @@
     margin-left: auto;
     margin-right: auto;
 
-}
-
-textarea{
-    border-radius: 8px;
-    margin: 8px;
 }
 
 #post{

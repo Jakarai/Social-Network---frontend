@@ -12,6 +12,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MypicsComponent } from './pages/mypics/mypics.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ResetComponent } from './pages/reset/reset.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'register',component:RegisterComponent},
   {path: 'mypics',component:MypicsComponent},
   {path: 'feed',component:FeedComponent},
+  {path: ':userid', component: UserProfileComponent},
   {path:'forgotPassword',component:ForgotPasswordpasswordComponent},
   {path:'resetPassword',component:ResetComponent},
   {path:'changePassword',component:ChangePasswordComponent},

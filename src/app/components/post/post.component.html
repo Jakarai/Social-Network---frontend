@@ -1,4 +1,19 @@
 <div *ngIf="posts">
+
+
+<nav aria-label="Posts">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" tabindex="-1"><<</a>
+    </li>
+    <li class="page-item"><a class="page-link" (click) = "turnPage(0)">1</a></li>
+    <li class="page-item"><a class="page-link" (click) = "turnPage(1)">2</a></li>
+    <li class="page-item"><a class="page-link" (click) = "turnPage(2)">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
     
     <div class="post-container" *ngFor="let post of posts">
         <div class="post-feed">
@@ -25,7 +40,7 @@
 
             <div>
                 <p *ngIf="post.content" id="content">{{post.content}}</p>
-                <img *ngIf="post.pictureLink" id="post-picture" src={{post.pictureLink}} alt="" width="345" height="260">
+                <img *ngIf="post.pictureLink" id="post-picture" src={{post.pictureLink}} alt="" width="260" height="260">
             </div>
         </div>
     </div>

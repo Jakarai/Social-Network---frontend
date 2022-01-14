@@ -11,6 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class ForgotPasswordComponent implements OnInit {
 
   email: string = "";
+  toggle: boolean = false;
 
   constructor(private apiServ: ApiService,private router:Router) { }
 
@@ -21,8 +22,8 @@ export class ForgotPasswordComponent implements OnInit {
     this.apiServ.forgotPassword(this.email).subscribe(data => {
       console.log(data)
     })
-
     this.router.navigate(['/resetPassword']);
+    this.toggle = true;
   }
 
 }

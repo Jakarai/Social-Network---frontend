@@ -53,11 +53,13 @@
 .post-feed{
     padding: 6px;
     background-color: #378156b7;
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: space-evenly;
     max-width: 800px;
     border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 

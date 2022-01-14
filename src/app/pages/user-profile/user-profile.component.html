@@ -1,8 +1,9 @@
+<app-nav></app-nav>
+
+<h3 class="profile-name">{{user?.firstname}} {{user?.lastname}}</h3>
+
 <div class="img-container">
-    <span class="img-content" *ngFor="let pic of pictures">
-        
-        <img id="pic" [src]="pic.pictureLink" width="320px" height="250px"/>
-    </span>
+    <img src="{{profilePic}}" alt="" width="200" height="200">
 </div>
 
 <div *ngIf="posts">
@@ -10,9 +11,6 @@
     <div class="post-container" *ngFor="let post of posts">
         <div class="post-feed">
             <span class="post-meta">
-                <img *ngIf="post.user.picture" id="profile-picture" src={{post.user.picture}} alt="" width="100" height="100">
-                <img *ngIf="!post.user.picture" id="profile-picture" src="../../../assets/img/default-profile-picture.png" alt="" width="100" height="100">
-
                 <div class="user-data">
                     Posted by:
                     <br>

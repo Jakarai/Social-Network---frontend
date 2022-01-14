@@ -1,3 +1,7 @@
+.container{
+    display: flex;
+}
+
 .post-container
 {
     color: white;
@@ -53,11 +57,13 @@
 .post-feed{
     padding: 6px;
     background-color: #378156b7;
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: space-evenly;
     max-width: 800px;
     border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -81,13 +87,12 @@ p {
     font-size: medium;
 }
 
-#delete-button{
-    margin-top: 8px;
-}
-
 .img-container
 {
     margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 50%;
 }
 
 .img-content{
@@ -100,4 +105,14 @@ p {
     border-radius: 10px;
     padding: 5px;
 
+}
+
+.profile-name{
+    text-align: center;
+    margin: 12px;
+    padding: 8px;
+    color: whitesmoke;
+    border-style: double;
+    border-color: #378156b7;;
+    background-color: #378156b7;;
 }

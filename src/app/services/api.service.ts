@@ -60,8 +60,8 @@ export class ApiService {
     })
   }
 
-  getAllPosts(){
-    return this.httpCli.get<any>(`${this.domain}/post`);
+  getAllPosts(page: number){
+    return this.httpCli.get<any>(`${this.domain}/pageable/${page}`);
   }
 
   getUsersPosts(userId: number){

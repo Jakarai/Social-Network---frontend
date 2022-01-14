@@ -113,12 +113,6 @@ export class CreatePostComponent implements OnInit {
       this.postInput = "";
       this.toggle = true;
   }
-
-  getAllPosts(){
-    this.apiServe.getAllPosts().subscribe(responseBody =>{
-      this.posts = responseBody.data
-    })
-  }
   
 
 }

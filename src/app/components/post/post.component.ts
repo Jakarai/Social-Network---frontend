@@ -33,12 +33,12 @@ export class PostComponent implements OnInit {
       this.current_user=responseBody0.data;
     })
 
-    this.getAllPosts();
+    this.getAllPosts(0);
   }
 
-  getAllPosts()
+  getAllPosts(page: number)
   {
-    this.apiServe.getAllPosts().subscribe(responseBody => {
+    this.apiServe.getAllPosts(page).subscribe(responseBody => {
       //console.log("response: "+responseBody.data);
       this.postList = responseBody.data;
 
@@ -63,6 +63,12 @@ export class PostComponent implements OnInit {
       }
       //this.post = this.posts
       //this.user.username=this.posts.
+    })
+  }
+
+  turnPage(page: number){
+    this.apiServe.getAllPosts(page).subscribe(responseBody => {
+      this.posts = responseBody.data;
     })
   }
 

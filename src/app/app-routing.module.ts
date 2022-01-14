@@ -17,11 +17,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 
 const routes: Routes = [
   {path: 'mainpage', component: MainPageComponent},
-  {path: '', component: LoginPageComponent},
   {path: 'register',component:RegisterComponent},
   {path: 'mypics',component:MypicsComponent},
   {path: 'feed',component:FeedComponent},
-  {path: ':userid', component: UserProfileComponent},
   {path:'forgotPassword',component:ForgotPasswordpasswordComponent},
   {path:'resetPassword',component:ResetComponent},
   {path:'changePassword',component:ChangePasswordComponent},
@@ -29,6 +27,8 @@ const routes: Routes = [
   {path:'changeEmail',component:ChangeEmailComponent},
   {path:'changeFirst',component:ChangefirstNameComponent},
   {path:'changeLast',component:ChangelastNameComponent},
+  {path: ':userid', component: UserProfileComponent},
+  {path: '', component: LoginPageComponent},
   /* no valid path, redirect to landing page */
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
